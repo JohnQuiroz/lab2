@@ -145,7 +145,7 @@ jobs:
       # Build the Docker image
       - name: Build
         run: |-
-          docker builds submit --pack image=us-east1-docker.pkg.dev/${PROJECT_ID}/$IMAGE:$GITHUB_SHA
+          gcloud builds submit --pack image=us-east1-docker.pkg.dev/${PROJECT_ID}/$IMAGE:$GITHUB_SHA
 
       # Push the Docker image to Google Container Registry
       - name: Publish
