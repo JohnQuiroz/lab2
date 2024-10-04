@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>co.edu.udea.arquitectura</groupId>
 	<artifactId>lab2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>lab2</name>
 	<description>lab2</description>
 	<url/>
@@ -80,7 +80,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<finalName>lab2-0.0.1-SNAPSHOT</finalName>
+		<finalName>lab2-0.0.1</finalName>
 	</build>
 
 </project>

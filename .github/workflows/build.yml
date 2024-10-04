@@ -107,7 +107,7 @@ jobs:
           #Set artifact name
           name: artifact
           #From this path
-          path: target/lab2-0.0.1-SNAPSHOT.jar
+          path: target/lab2-0.0.1.jar
       #Docker credentials
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
@@ -136,5 +136,5 @@ jobs:
           GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
         run: |
           gcloud auth configure-docker us-west2-docker.pkg.dev
-          docker build -t us-west2-docker.pkg.dev/arquitectura-437520/lab2/lab2:latest .
-          docker push us-west2-docker.pkg.dev/arquitectura-437520/lab2/lab2:latest
+          docker build -t us-west2-docker.pkg.dev/arquitectura-437520/lab2/lab2-0.0.1:latest .
+          docker push us-west2-docker.pkg.dev/arquitectura-437520/lab2/lab2-0.0.1:latest
