@@ -139,7 +139,8 @@ jobs:
           install_components: 'gke-gcloud-auth-plugin'
           export_default_credentials: true
       - run: |-
-          gcloud --quiet auth configure-docker us-east1-docker.pkg.dev
+          gcloud --quiet auth configure-docker
+          gcloud auth application-default login
 
       # Get the GKE credentials so we can deploy to the cluster
       - uses: google-github-actions/get-gke-credentials@v2
