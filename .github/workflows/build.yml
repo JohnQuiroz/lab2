@@ -121,6 +121,7 @@ jobs:
 
   deploy:
     needs: build
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Code checkout
@@ -136,5 +137,4 @@ jobs:
           GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
         run: |
           gcloud auth configure-docker us-west2-docker.pkg.dev
-          docker build -t us-west2-docker.pkg.dev/arquitectura-437520/lab2/lab2:latest .
           docker push us-west2-docker.pkg.dev/arquitectura-437520/lab2/lab2:latest
