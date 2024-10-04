@@ -141,7 +141,7 @@ jobs:
           export_default_credentials: true
       - run: |-
           gcloud --quiet auth configure-docker
-          echo '$PROJECT_ID ------ ${{ secrets.GKE_SA_KEY }}'
+          echo '${{ secrets.GKE_PROJECT }} ------ ${{ secrets.GKE_SA_KEY }}'
 
       - uses: google-github-actions/get-gke-credentials@v2
         with:
