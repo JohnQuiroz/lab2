@@ -155,7 +155,7 @@ jobs:
       - name: Publish
         run: |-
           gcloud auth configure-docker us-east1-docker.pkg.dev
-          docker push "us-east1-docker.pkg.dev/${PROJECT_ID}/repository/$IMAGE:$GITHUB_SHA"
+          docker push "us-east1-docker.pkg.dev/arquitectura-437616/repository/$IMAGE:$GITHUB_SHA"
 
       # Set up kustomize
       - name: Set up Kustomize
