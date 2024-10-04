@@ -150,17 +150,16 @@ jobs:
           gcloud auth configure-docker us-east1-docker.pkg.dev
           docker build -t us-east1-docker.pkg.dev/$GOOGLE_PROJECT/repository/$IMAGE:latest .
           docker push us-east1-docker.pkg.dev/$GOOGLE_PROJECT/repository/$IMAGE:latest
-#
-#      - name: Set up Kustomize
-#        run: |-
-#          curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-#          chmod u+x ./kustomize
-#
-#      # Deploy the Docker image to the GKE cluster
-#      - name: Deploy
-#        run: |-
-#          echo 'DESPLEGANDO -------------- kubectl'
-#          ./kustomize edit set image us-east1-docker.pkg.dev/PROJECT_ID/repository/IMAGE:TAG=us-east1-docker.pkg.dev/$PROJECT_ID/repository/$IMAGE:$GITHUB_SHA
-#          ./kustomize build . | kubectl apply -f -
-#          kubectl rollout status deployment/$DEPLOYMENT_NAME
-#          kubectl get services -o wide
+
+      - name: Set up Kustomize
+        run: |-
+          curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+          chmod u+x ./kustomize
+
+      # Deploy the Docker image to the GKE cluster
+      - name: Deploy
+        run: |-
+          ./kustomize edit set image us-east1-docker.pkg.dev/PROJECT_ID/repository/IMAGE:TAG=us-east1-docker.pkg.dev/$PROJECT_ID/repository/$IMAGE:latest
+          ./kustomize build . | kubectl apply -f -
+          kubectl rollout status deployment/$DEPLOYMENT_NAME
+          kubectl get services -o wide
