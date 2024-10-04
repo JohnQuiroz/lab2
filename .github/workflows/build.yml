@@ -140,8 +140,7 @@ jobs:
           install_components: 'gke-gcloud-auth-plugin'
           export_default_credentials: true
       - run: |-
-          gcloud --quiet auth configure-docker
-          echo '${{ secrets.GKE_PROJECT }} ------ ${{ secrets.GKE_SA_KEY }}'
+          gcloud auth configure-docker us-east1-docker.pkg.dev
 
       - uses: google-github-actions/get-gke-credentials@v2
         with:
