@@ -140,9 +140,7 @@ jobs:
           export_default_credentials: true
       - run: |-
           gcloud --quiet auth configure-docker
-          gcloud auth application-default login --no-launch-browser $GOOGLE_APPLICATION_CREDENTIALS
 
-      # Get the GKE credentials so we can deploy to the cluster
       - uses: google-github-actions/get-gke-credentials@v2
         with:
           project_id: ${{ secrets.GKE_PROJECT }}
