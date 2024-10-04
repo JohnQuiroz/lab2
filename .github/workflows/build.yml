@@ -154,6 +154,7 @@ jobs:
       # Push the Docker image to Google Container Registry
       - name: Publish
         run: |-
+          gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us-east1-docker.pkg.dev
           docker push "us-east1-docker.pkg.dev/${PROJECT_ID}/$IMAGE:$GITHUB_SHA"
 
       # Set up kustomize
