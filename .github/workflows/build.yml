@@ -142,12 +142,7 @@ jobs:
       - run: |-
           gcloud auth configure-docker us-east1-docker.pkg.dev
 
-      - uses: google-github-actions/get-gke-credentials@v2
-        with:
-          project_id: ${{ secrets.GKE_PROJECT }}
-          cluster_name: ${{ env.GKE_CLUSTER }}
-          location: ${{ env.GKE_ZONE }}
-          credentials: ${{ secrets.GKE_SA_KEY }}
+      
 
       # Build the Docker image
       - name: Build
