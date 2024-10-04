@@ -12,6 +12,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: cluster    # Add your cluster name here.
   GKE_ZONE: us-east1   # Add your cluster zone here.
+  ACCOUNT: ${{ secrets.EMAIL }}
   DEPLOYMENT_NAME: gke-test # Add your deployment name here.
   IMAGE: lab2
 jobs:
@@ -151,7 +152,9 @@ jobs:
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
           .
-          gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin us-east1-docker.pkg.dev
+          gcloud iam service-accounts keys create key.json --iam-account=${ACCOUNT}
+          export GKE_SA_KEY=$(cat key.json | base64)
+          gcloud auth configure-docker us-east1-docker.pkg.dev
           docker push "us-east1-docker.pkg.dev/${PROJECT_ID}/repository/$IMAGE:$GITHUB_SHA"
 
       # Set up kustomize
