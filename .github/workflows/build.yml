@@ -140,7 +140,7 @@ jobs:
           install_components: 'gke-gcloud-auth-plugin'
           export_default_credentials: true
       - run: |-
-          gcloud auth configure-docker us-east1-docker.pkg.dev
+          gcloud auth configure-docker
 
       # Build the Docker image
       - name: Build
