@@ -141,16 +141,7 @@ jobs:
           export_default_credentials: true
       - run: |-
           gcloud auth configure-docker us-east1-docker.pkg.dev
-
-      # Build the Docker image
-      - name: Build
-        run: |-
           gcloud builds submit --pack image=us-east1-docker.pkg.dev/${PROJECT_ID}/$IMAGE:$GITHUB_SHA
-
-      # Push the Docker image to Google Container Registry
-      - name: Publish
-        run: |-
-          echo 'PUBLICANDO DOCKER ----------- docker push'
           docker push "us-east1-docker.pkg.dev/${PROJECT_ID}/$IMAGE:$GITHUB_SHA"
 
       # Set up kustomize
