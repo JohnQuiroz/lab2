@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  PROJECT_ID: ${{ secrets.GOOGLE_PROJECT }}
   GKE_CLUSTER: cluster    # Add your cluster name here.
   GKE_ZONE: us-east1   # Add your cluster zone here.
   ACCOUNT: ${{ secrets.EMAIL }}
@@ -135,7 +135,7 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v2
       - name: Install the gcloud cli
-        uses: google-github-actions/setup-gcloud@v0
+        uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GOOGLE_PROJECT }}
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
