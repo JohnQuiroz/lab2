@@ -146,6 +146,7 @@ jobs:
         env:
           GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
         run: |
+          mvn clean install
           gcloud auth configure-docker us-east1-docker.pkg.dev
           docker build -t us-east1-docker.pkg.dev/$GOOGLE_PROJECT/repository/$IMAGE:latest .
           docker push us-east1-docker.pkg.dev/$GOOGLE_PROJECT/repository/$IMAGE:latest
