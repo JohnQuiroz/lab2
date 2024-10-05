@@ -153,8 +153,7 @@ jobs:
           curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
           chmod u+x ./kustomize
           touch kustomization.yaml
-          ./kustomize edit set image us-east1-docker.pkg.dev/PROJECT_ID/repository/IMAGE:TAG=us-east1-docker.pkg.dev/$GOOGLE_PROJECT/repository/$IMAGE:latest
-          cat kustomization.yaml
+          ./kustomize edit set image us-east1-docker.pkg.dev/GOOGLE_PROJECT/repository/IMAGE:TAG=us-east1-docker.pkg.dev/$GOOGLE_PROJECT/repository/$IMAGE:latest
           ./kustomize build . | kubectl apply -f -
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
