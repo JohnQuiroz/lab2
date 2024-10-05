@@ -151,9 +151,3 @@ jobs:
           cluster_name: autopilot-cluster-2
           project_id: ${{ secrets.GOOGLE_PROJECT }}
           expose: 8080
-
-      - name: Get-deployments
-        shell: bash
-        run: |
-          kubectl get pods -n lab2
-          kubectl get deployment -n lab2
