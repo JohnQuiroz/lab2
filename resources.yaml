@@ -29,4 +29,4 @@ spec:
     spec:
       containers:
         - name: lab2
-          image: us-east1-docker.pkg.dev/GOOGLE_PROJECT/repository/lab2:latest
+          image: us-east1-docker.pkg.dev/arquitectura-437622/repository/lab2:latest
