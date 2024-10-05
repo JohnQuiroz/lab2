@@ -145,7 +145,7 @@ jobs:
       - name: Deploy with gke-deploy cli
         uses: google-github-actions/deploy-gke@v0.0.1
         with:
-          image: lab2
+          image: johnquiroz/lab2
           app_name: lab2
           region: us-east1
           cluster_name: autopilot-cluster-2
