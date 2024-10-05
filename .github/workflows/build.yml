@@ -142,16 +142,18 @@ jobs:
           install_components: 'gke-gcloud-auth-plugin'
           export_default_credentials: true
 
-      - name: Build and push the docker image
-        env:
-          GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-        run: |
-          mvn clean install
-          gcloud auth configure-docker us-east1-docker.pkg.dev
-          docker build -t us-east1-docker.pkg.dev/$GOOGLE_PROJECT/repository/$IMAGE:latest .
-          docker push us-east1-docker.pkg.dev/$GOOGLE_PROJECT/repository/$IMAGE:latest
+      - name: Deploy with gke-deploy cli
+        uses: google-github-actions/deploy-gke-container@v0.1
+        with:
+          image: lab2
+          app_name: lab2
+          region: us-east1
+          cluster_name: autopilot-cluster-2
+          project_id: ${{ secrets.GOOGLE_PROJECT }}
+          expose: 8080
 
-      - name: Deploy
-        run: |-
-          gcloud container clusters get-credentials autopilot-cluster-1 --region us-east1
-          kubectl apply -f resources.yaml
+      - name: Get-deployments
+        shell: bash
+        run: |
+          kubectl get pods -n lab2
+          kubectl get deployment -n lab2
