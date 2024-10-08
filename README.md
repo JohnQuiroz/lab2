@@ -11,6 +11,7 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=JohnQuiroz_lab2&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=JohnQuiroz_lab2)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=JohnQuiroz_lab2&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=JohnQuiroz_lab2)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=JohnQuiroz_lab2&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=JohnQuiroz_lab2)
+[![Known Vulnerabilities](https://snyk.io/test/github/johnquiroz/lab2/badge.svg)](https://snyk.io/test/github/johnquiroz/lab2)
 
 Implementation of a Simple App with the next operations:
 
